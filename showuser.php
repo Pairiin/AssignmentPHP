@@ -14,7 +14,7 @@
   <?
   $hostname = "localhost";
   $username = "root";
-  $password = "1234";
+  $password = "12345678";
   $dbname = "cosmetic";
 
   $conn = mysql_connect($hostname,$username,$password);
@@ -79,19 +79,6 @@ $a=1;
       <th>Edit</th>
     </tr>
   </thead>
-  <tfoot>
-    <tr>
-      <th>No.</th>
-      <th>ID</th>
-      <th>User</th>
-      <th>Pass</th>
-
-      <th>Name</th>
-      <th>Del</th>
-      <th>Edit</th>
-
-    </tr>
-  </tfoot>
   <tbody>
 
   <?php while($rs = mysql_fetch_array($result)){
@@ -119,10 +106,7 @@ $a=1;
 
   </nav>
 <div class="container" style=" padding-top: 40px;">
-    <div class="nav-center">
-
-    </div>
-
+    <div class="nav-center"></div>
 <script async type="text/javascript" src="js/bulma.js"></script>
 </body>
 </html>

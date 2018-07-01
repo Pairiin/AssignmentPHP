@@ -1,10 +1,6 @@
 <?php
-
-$hostname = "localhost";
-$username = "root";
-$password = "1234";
-$dbname = "cosmetic";
-
+$id = $_GET["id"];
+  include("connect.php");
 $conn = mysql_connect($hostname,$username,$password);
 if(!$conn) die ("ไม่สามารถติดต่อกับ MYSQL ได้");
 mysql_select_db($dbname,$conn) or die ("ไม่สามารถเลือกฐานข้อมูล itbook ได้");
@@ -33,16 +29,12 @@ $data = mysql_fetch_array($result);
 
 <body>
 
-
-
-
 <nav class="nav has-shadow">
     <div class="container">
       <div class="nav-left">
         <a class="nav-item" href="index.php">
           <img src="assets/logo.png">
         </a>
-
         <a href="showproduct.php" class="nav-item is-tab is-hidden-mobile ">Product List</a>
         <a href="showuser.php" class="nav-item is-tab is-hidden-mobile is-active">Member List</a>
         <a href="showorder.php" class="nav-item is-tab is-hidden-mobile">Order List</a>
@@ -59,7 +51,7 @@ $data = mysql_fetch_array($result);
     <div class="hero-body">
       <div class="container">
         <div class="columns is-vcentered">
-          <div class="column is-4 is-offset-4">
+          <div class="column is-6 is-offset-3">
             <h1 class="title">
               Edit Member Information
             </h1>
@@ -70,8 +62,6 @@ $data = mysql_fetch_array($result);
                 <input class="input" type="text" placeholder="<?echo $data['id'];?>" disabled>
                   <!--<input class="input" type="text" name="name" placeholder="John Smith" required="">-->
                   <input class="input" type="hidden" name="id" value="<?=$data['id'];?>"><?=$data['id'];?>
-
-
                 </p>
                 <label class="label">Username</label>
                 <p class="control">

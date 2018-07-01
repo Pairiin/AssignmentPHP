@@ -12,11 +12,7 @@
 </head>
 <body>
   <?
-  $hostname = "localhost";
-  $username = "root";
-  $password = "1234";
-  $dbname = "cosmetic";
-
+    include("connect.php");
   $conn = mysql_connect($hostname,$username,$password);
   if(!$conn) die ("ไม่สามารถติดต่อกับ MYSQL ได้");
   mysql_select_db($dbname,$conn) or die ("ไม่สามารถเลือกฐานข้อมูล cosmetic ได้");
@@ -28,8 +24,6 @@ $result = mysql_query ($sqltxt,$conn);
 
 $a=1;
 ?>
-
-
 <nav class="nav has-shadow">
     <div class="container">
       <div class="nav-left">
@@ -78,17 +72,6 @@ $a=1;
       <th>Email</th>
     </tr>
   </thead>
-  <tfoot>
-    <tr>
-      <th>No.</th>
-      <th>Order_id</th>
-      <th>OrderDate</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Tel</th>
-      <th>Email</th>
-    </tr>
-  </tfoot>
   <tbody>
 
   <?php while($rs = mysql_fetch_array($result)){
@@ -101,7 +84,7 @@ $a=1;
       echo "<td>$rs[4]</td>";
       echo "<td>$rs[5]</td>";
       echo "<td><a href=\"deleteorder.php?id=$rs[0]\" ";
-      echo "onclick=\"return confirm('ยืนยันการลบข้อมูลสมาชิก $rs[1]')\">[DELETE]";
+      echo "onclick=\"return confirm('ยืนยันการลบข้อมูลสมาชิก $rs[2]')\">[DELETE]";
 
       echo "</a></td></tr>";
     $a++;
@@ -111,15 +94,16 @@ $a=1;
   </tbody>
 </table>
 
-</div></div></div>
+    </div>
+  </div>
+</div>
 
 <nav class="nav has-shadow" style=" height: 70px;">
 
   </nav>
 <div class="container" style=" padding-top: 40px;">
     <div class="nav-center">
-
-    </div>
+</div>
 
 <script async type="text/javascript" src="js/bulma.js"></script>
 </body>

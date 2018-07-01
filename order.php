@@ -1,7 +1,6 @@
 <?php
 ob_start();
 session_start();
-
 include("connect.php");
 $id= $_POST["txtProductID"]; //Id สินค้าที่เลือกมา
 $strSQL = "SELECT * FROM product WHERE product_id = '".$_POST["txtProductID"]."'";

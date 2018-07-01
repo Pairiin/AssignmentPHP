@@ -13,10 +13,7 @@
 </head>
 <body>
   <?
-  $hostname = "localhost";
-  $username = "root";
-  $password = "1234";
-  $dbname = "cosmetic";
+  include("connect.php");
 
   $conn = mysql_connect($hostname,$username,$password);
   if(!$conn) die ("ไม่สามารถติดต่อกับ MYSQL ได้");
@@ -30,10 +27,6 @@ $data = mysql_fetch_array($result);
 
 ?>
 <br>
-
-
-
-
   <nav class="nav has-shadow">
     <div class="container">
       <div class="nav-left">

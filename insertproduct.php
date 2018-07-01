@@ -3,10 +3,7 @@
 
 
 <?
-$hostname = "localhost";
-$username = "root";
-$password = "1234";
-$dbname = "cosmetic";
+include("connect.php");
 $conn = mysql_connect( $hostname, $username, $password );
 if (!$conn) die ( "ไม่สามารถติดต่อกับ MySQL ได้" );
 mysql_select_db ( $dbname, $conn )or die ( "ไม่สามารถเลือกฐานข้อมูล cosmetic ได้" );
@@ -22,8 +19,8 @@ function getbrandSelect($id){
 
   if(!$dbquery)
   die("(FunctionDB:getbrandSelect) SELECT brand มีข้อผิดพลาด".mysql_error());
- 
-  
+
+
   echo "<p class=\"control\"> <span class=\"select is-primary\"> ";
   echo "<select name=\"brand_id\"> <option value=\"\">เลือกแบรนด์</option>";
 
@@ -40,8 +37,6 @@ while($rs = mysql_fetch_array($dbquery))
   echo "</select> </span> </p>  ";
 }
 
-
-
 function gettypeSelect($id){
   global $conn;
   $sqltext = "select * from product_type";
@@ -49,11 +44,9 @@ function gettypeSelect($id){
 
   if(!$dbquery)
   die("(FunctionDB:gettypeSelect) SELECT product_type มีข้อผิดพลาด".mysql_error());
-  
+
   echo "<p class=\"control\"> <span class=\"select is-primary\"> ";
   echo "<select name=\"protype_id\"> <option value=\"\">เลือกประเภท</option>";
-
-
 
 while($rs = mysql_fetch_array($dbquery))
   {
@@ -82,7 +75,7 @@ while($rs = mysql_fetch_array($dbquery))
         <a class="nav-item" href="index.php">
           <img src="assets/logo.png" >
         </a>
-        
+
         <a href="showproduct.php" class="nav-item is-tab is-hidden-mobile is-active">Product List</a>
         <a href="showuser.php" class="nav-item is-tab is-hidden-mobile ">Member List</a>
       </div>
@@ -91,7 +84,7 @@ while($rs = mysql_fetch_array($dbquery))
         <span></span>
         <span></span>
       </span>
-    
+
     </div>
   </nav>
 
@@ -99,38 +92,38 @@ while($rs = mysql_fetch_array($dbquery))
     <div class="hero-body">
       <div class="container">
         <div class="columns is-vcentered">
-          <div class="column is-4 is-offset-4">
+          <div class="column is-6 is-offset-3">
             <h1 class="title">
               Edit Product Information
             </h1>
             <form enctype="multipart/form-data" name="save" method="post" action="saveproduct.php">
               <div class="box">
-              
+
                 <label class="label">Name</label>
                 <p class="control">
                   <input class="input is-primary" type="text" name="product_name" size="50" maxlength="50" required="" >
 
-                  
 
-                
+
+
               </p>
               <label class="label">ฺBrand Name : </label>
-                  
+
                 <?=getbrandSelect($data['brand_id']);?>
                 <hr>
 
 
                 <label class="label">Details</label>
                 <p class="control">
-                  
+
                   <textarea class="textarea is-primary" name="product_detail" size="50" maxlength="50"></textarea>
                 </p>
-               
+
                 <label class="label">Cost</label>
                 <p class="control">
                   <input class="input is-primary" type="text" name="product_price" maxlength="25" size="20" required="" >
                 </p>
-               
+
 
                 <label class="label">Type</label>
                 <?=gettypeSelect($data['protype_id']);?>
@@ -138,16 +131,16 @@ while($rs = mysql_fetch_array($dbquery))
 
                 <label class="label">Picture</label>
                 <p class="control">
-                  
-                  
+
+
                   <input type = "hidden" name = "max_size" value="1000000">
-                  
+
                   <a class="button is-primary is-outlined"><input type = "file" name="image" size="50"></a>
                 </p>
                 <hr>
-                
-                
-                      
+
+
+
 
                 <label class="label">Quantity</label>
                 <p class="control">
@@ -157,7 +150,7 @@ while($rs = mysql_fetch_array($dbquery))
 
                 <p class="control">
                   <input type="submit" class="button is-primary" value="Confirm">
-                
+
                   <a href='showuser.php' class="button is-default">Cancel</a>
                 </p>
               </div>

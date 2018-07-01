@@ -3,8 +3,6 @@
 	ob_start();
   session_start();
 	include_once "connect.php";
-
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,8 +11,6 @@
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 </head>
 <body>
-
-
 
 <?php echo "วันที่".DateThai(date("Y-m-d"))."";?>
 
@@ -60,10 +56,7 @@ $objResult = mysql_fetch_array($objQuery);
       </tr>
     </thead>
     <tbody>
-
-
   <?php
-
   $Total = 0;
   $SumTotal = 0;
 

@@ -1,13 +1,9 @@
 <?php
-
-$hostname = "localhost";
-$username = "root";
-$password = "1234";
-$dbname = "cosmetic";
-
+$id = $_GET["id"];
+  include("connect.php");
 $conn = mysql_connect($hostname,$username,$password);
 if(!$conn) die ("ไม่สามารถติดต่อกับ MYSQL ได้");
-mysql_select_db($dbname,$conn) or die ("ไม่สามารถเลือกฐานข้อมูล itbook ได้");
+mysql_select_db($dbname,$conn) or die ("ไม่สามารถเลือกฐานข้อมูล cosmetic ได้");
 mysql_query("SET character_set_results=tis620");
 mysql_query("SET character_set_client=tis620");
 mysql_query("SET character_set_connection=tis620");
@@ -16,6 +12,7 @@ mysql_query("SET NAMES UTF8");
 $sqltext="select * from product where product_id = $id";
 $result = mysql_query($sqltext,$conn);
 $data = mysql_fetch_array($result);
+
 
 function getbrandSelect($id){
   global $conn;
@@ -81,20 +78,21 @@ while($rs = mysql_fetch_array($dbquery))
     <div class="hero-body">
       <div class="container">
         <div class="columns is-vcentered">
-          <div class="column is-4 is-offset-4">
+          <div class="column is-8 is-offset-2">
             <h1 class="title">
               Edit Product Information
             </h1>
+
 <form method="POST" action="saveeditproduct.php?id=<?=$id?>" enctype="multipart/form-data">
  <div class="box">
-              
+
     <label class="label">Name</label>
                 <p class="control">
       <input type="hidden" name="product_id" value="<?=$data['user_id'];?>"><?=$data['product_id'];?>
        <input input class="input is-primary" type="text" name="product_name" size="40" value="<?=$data['product_name'];?>">
     </p>
 
-    <label class="label">Brand Name : </label>                  
+    <label class="label">Brand Name : </label>
     <?=getbrandSelect($data['brand_id']);?>
     <hr>
 
@@ -116,7 +114,7 @@ while($rs = mysql_fetch_array($dbquery))
                 <p class="control">
                   <? echo '<td><img width="200px" src="data:image/jpeg;base64,'.base64_encode( $data['product_img'] ).'"/>';?>
                 </p>
-                <hr>         
+                <hr>
 
                   <label class="label">Quantity</label>
                 <p class="control">
@@ -126,7 +124,7 @@ while($rs = mysql_fetch_array($dbquery))
 
                 <p class="control">
                   <input type="submit" class="button is-primary" value="Confirm">
-                
+
                   <a href='showproduct.php' class="button is-default">Cancel</a>
                 </p>
               </div>
@@ -135,7 +133,7 @@ while($rs = mysql_fetch_array($dbquery))
         </div>
       </div>
     </div>
-  
+
 </form>
           </div>
         </div>

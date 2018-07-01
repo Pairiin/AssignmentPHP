@@ -12,11 +12,11 @@
 </head>
 <body>
   <?
+  $id = $_GET['id'];
   $hostname = "localhost";
   $username = "root";
-  $password = "1234";
+  $password = "12345678";
   $dbname = "cosmetic";
-
   $conn = mysql_connect($hostname,$username,$password);
   if(!$conn) die ("ไม่สามารถติดต่อกับ MYSQL ได้");
   mysql_select_db($dbname,$conn) or die ("ไม่สามารถเลือกฐานข้อมูล cosmetic ได้");
@@ -50,8 +50,6 @@ $a=1;
 
     </div>
   </nav>
-
-
 <section class="hero is-primary bsa">
 <div class="hero-body" style=" padding-top: 80px; padding-bottom: 80px; ">
 <div class="container">
@@ -87,15 +85,7 @@ $a=1;
       <th>Qty</th>
     </tr>
   </thead>
-  <tfoot>
-    <tr>
-      <th>No.</th>
-      <!-- <th>Order_detail_id</th> -->
-      <th>Order_id</th>
-      <th>Product_id</th>
-      <th>Qty</th>
-    </tr>
-  </tfoot>
+
   <tbody>
 
 <?php
@@ -108,7 +98,8 @@ while($rs = mysql_fetch_array($result)){
   echo "<td>$rs[2]</td>";
   echo "<td>$rs[3]</td>";
   $a++;
-}
+
+  }
 mysql_close($conn);
 
 ?>

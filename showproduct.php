@@ -1,4 +1,4 @@
-<html lang="utf-8">
+﻿<html lang="utf-8">
 <head>
   <title>Display Data From Table Book</title>
   <meta http-equiv=Content-Type content="text/html; charset=utf-8">
@@ -12,11 +12,7 @@
 </head>
 <body>
   <?
-  $hostname = "localhost";
-  $username = "root";
-  $password = "1234";
-  $dbname = "cosmetic";
-
+  include("connect.php");
   $conn = mysql_connect($hostname,$username,$password);
   if(!$conn) die ("ไม่สามารถติดต่อกับ MYSQL ได้");
   mysql_select_db($dbname,$conn) or die ("ไม่สามารถเลือกฐานข้อมูล cosmetic ได้");
@@ -30,14 +26,12 @@ $result = mysql_query ($sqltxt,$conn);
 $a=1;
 
 ?>
-
 <nav class="nav has-shadow">
     <div class="container">
       <div class="nav-left">
         <a class="nav-item" href="index.php">
           <img src="assets/logo.png" >
         </a>
-
         <a href="showproduct.php" class="nav-item is-tab is-hidden-mobile is-active">Product List</a>
         <a href="showuser.php" class="nav-item is-tab is-hidden-mobile ">Member List</a>
         <a href="showorder.php" class="nav-item is-tab is-hidden-mobile ">Order List</a>
@@ -47,10 +41,8 @@ $a=1;
         <span></span>
         <span></span>
       </span>
-
     </div>
   </nav>
-
 
 <section class="hero is-primary bsa">
 <div class="hero-body" style=" padding-top: 80px; padding-bottom: 80px; ">
@@ -68,17 +60,12 @@ $a=1;
  <span class="icon is-small">
       <i class="fa fa-plus"></i>
   </span>
-
-  <span>Add Product
-  </span>
-
+  <span>Add Product</span>
   </a>
-
+      </div>
+    </div>
+  </div>
 </div>
-
-</div>
-
-</div></div>
 </section>
 
 <div class="section">
@@ -97,20 +84,7 @@ $a=1;
       <th>Edit</th>
     </tr>
   </thead>
-  <tfoot>
-    <tr>
-      <th>No.</th>
-      <th>ID</th>
-      <th>Product Name</th>
-      <th>Cost</th>
-      <th>Picture</th>
-      <th>Del</th>
-      <th>Edit</th>
-
-    </tr>
-  </tfoot>
   <tbody>
-
 <?php
 
 while($rs = mysql_fetch_array($result)){
@@ -130,20 +104,13 @@ while($rs = mysql_fetch_array($result)){
 mysql_close($conn);
 
 ?>
-
-
   </tbody>
 </table>
-
-</div></div></div>
-
-
-<nav class="nav has-shadow" style=" height: 70px;">
-
-  </nav>
-<div class="container" style=" padding-top: 40px; padding-bottom: 100px;">
-
     </div>
+  </div>
+</div>
+  <nav class="nav has-shadow" style=" height: 70px;"></nav>
+<div class="container" style=" padding-top: 40px; padding-bottom: 100px;"></div>
 
 <script async type="text/javascript" src="js/bulma.js"></script>
 </body>

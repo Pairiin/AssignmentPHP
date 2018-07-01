@@ -2,10 +2,9 @@
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta charset="utf-8">
 <?
-$hostname = "localhost";
-$username = "root";
-$password = "1234";
-$dbname = "cosmetic";
+
+$id = $_GET['id'];
+include("connect.php");
 $conn = mysql_connect( $hostname, $username, $password );
 if ( ! $conn ) die ( "ไม่สามารถติดต่อกับ MySQL ได้" );
 mysql_select_db ( $dbname, $conn ) or die ( "ไม่สามารถเลือกฐานข้อมูล cosmetic ได้" );
